@@ -39,14 +39,14 @@ public class ExpresionesFastDon {
                 case 1:
                     System.out.println("Ingresa la declaracion de una variable entera: ");
                     String entera = sc.nextLine();
-                    String varentera = "^\\s*int\\s+^[a-zA-Z0-9_]*(\\s*;)*((\\s*=\\s*-?\\d+)*?\\s*;\\s*)*$";
+                    String varentera = "^int\\s+[a-zA-Z0-9_]*\\s*(=\\s*\\d+)?\\s*;$";
                     if (entera.matches(varentera)) {
                         System.out.println("Declaracion valida.");
+                        error = false;
                     } else {
                         System.out.println("Declaracion invalida.");
                         error = true;
                     }
-                    error = false;
                     break;
                 case 2:
                     System.out.println("Ingresa la declaracion de una variable de cadena: ");
@@ -58,18 +58,24 @@ public class ExpresionesFastDon {
                     } else {
                         System.out.println("Declaracion invalida.");
                         error = false;
-                    }
+                    } 
                     break;
                 case 3:
                     System.out.println("Ingresa la declaracion de una variable doble: ");
                     String doble = sc.nextLine();
-                    String 
                     error = false;
                     break;
                 case 4:
                     System.out.println("Ingresa la declaracion de una variable flotante: ");
                     String flotante = sc.nextLine();
-
+                    String varfloat = "^\\s*\\s+[a-zA-Z_][a-zA-Z0-9_]*(\\s*=\\s*\"*\")?\\s*;\\s*$";
+                    if (flotante.matches(varfloat)) {
+                        System.out.println("Declaracion valida.");
+                        error = false;
+                    } else {
+                        System.out.println("Declaracion invalida.");
+                        error = false;
+                    }
                     error = false;
                     break;
                 case 0:
