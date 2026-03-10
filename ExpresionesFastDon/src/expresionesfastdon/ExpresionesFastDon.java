@@ -21,32 +21,33 @@ public class ExpresionesFastDon {
         int opc = 0;
         int opcExpre = 0;
         int opcDato = 0;
+        int opcEC = 0;
+        int opcER = 0;
         boolean error = true;
         do {
             try {
                 System.out.println("Elige una expresion para validarla");
-                System.out.println("1. Verificar la declaracion de variables.");
-                System.out.println("2. Verificar la delcaracion de los Tipos de Datos.");
-                System.out.println("3. Verificar la declararion de las Estructuras Condicionales.");
-                System.out.println("4. Verificar la delcaracion de las Estructuras de Repeticion.");
-                System.out.println("5. Operadores.");
-                System.out.println("");
+                System.out.println("1. Verificar la declaracion de Tipos de Datos.");
+//                System.out.println("2. Verificar la delcaracion de los Tipos de Datos.");
+                System.out.println("2. Verificar la declararion de las Estructuras Condicionales.");
+                System.out.println("3. Verificar la delcaracion de las Estructuras de Repeticion.");
+                System.out.println("Presiona 0 para salir del programa.");
                 opcExpre = sc.nextInt();
             } catch (InputMismatchException e) {
                 System.out.println("Error: opcion no valida..");
             }
             sc.nextLine();
-
             switch (opcExpre) {
+                // ===== Validacion de tipos de datos =====
                 case 1:
                     try {
                         System.out.println("\t===||Prueba de expresiones de FastDon||===");
                         System.out.println("Ingresa una expresion para verificar:");
-                        System.out.println("1. Declaracion de una variable entera (int).");
-                        System.out.println("2. Declaracion de una variable de cadena (String).");
-                        System.out.println("3. Declaracion de una variable doble (Double).");
-                        System.out.println("4. Declaracion de una variable flotante (float).");
-                        System.out.println("5. Declaracion de una variable flotante ().");
+                        System.out.println("1. Declaracion de una variable Entera (int).");
+                        System.out.println("2. Declaracion de una variable de Cadena (String).");
+                        System.out.println("3. Declaracion de una variable Doble (Double).");
+                        System.out.println("4. Declaracion de una variable Flotante (float).");
+                        System.out.println("5. Declaracion de una variable Booleana ().");
                         System.out.println("Presiona 0 para salir del programa.");
                         opc = sc.nextInt();
                     } catch (InputMismatchException e) {
@@ -103,7 +104,7 @@ public class ExpresionesFastDon {
                             }
                             break;
                         case 5:
-                            System.out.println("Ingresa la declaracion de una variable flotante: ");
+                            System.out.println("Ingresa la declaracion de una variable booleana: ");
                             String booleano = sc.nextLine();
                             String varBoolean = "^\\s*boolean\\s+[a-zA-Z_][a-zA-Z0-9_]*(\\s*=\\s*(true|false))?\\s*;\\s*$";
                             if (booleano.matches(varBoolean)) {
@@ -124,45 +125,142 @@ public class ExpresionesFastDon {
                             break;
                     }
                     break;
+                // =========== Verificar las estructuras condicionales ==========
                 case 2:
                     try {
-                        System.out.println("Selecciona el tipo de dato a verificar.");
-                        System.out.println("1. Tipo de dato Entero.");
-                        System.out.println("2. Tipo de dato String.");
-                        System.out.println("3. Tipo de dato Doble.");
-                        System.out.println("4. Tipo de dato Flotante");
-                        System.out.println("5. Tipo de dato Booleano.");
-                        opcDato = sc.nextInt();
+                        System.out.println("Ingresa la Estructura condicional a verificar.");
+                        System.out.println("1. Estructura condicional if-else.");
+                        System.out.println("2. Estructura condicional Switch.");
+                        opcEC = sc.nextInt();
                     } catch (InputMismatchException e) {
-                        System.out.println("Error: opcion no valida...");
+                        System.out.println("Errro: opcion no valida..");
                     }
                     sc.nextLine();
-
-                    switch (opcDato) {
+                    switch (opcEC) {
                         case 1:
-                            System.out.println("Ingresa la declaracion de una variable entera: ");
-                            String entero = sc.nextLine();
-                            String varEntero = "^\\s*int\\s+.*$";
-                            if (entero.matches(varEntero)) {
-                                System.out.println("Declaracion valida.");
+                            System.out.println("Ingresa una estructura if-else:");
+                            String ifElse = sc.nextLine();
+                            String varIfElse = "^\\s*if\\s*\\([^)]*\\)\\s*\\{[^}]*\\}\\s*else\\s*\\{[^}]*\\}\\s*$";
+                            if (ifElse.matches(varIfElse)) {
+                                System.out.println("Estructura if-else válida.");
                                 error = false;
                             } else {
-                                System.out.println("Declaracion invalida.");
+                                System.out.println("Estructura if-else inválida.");
+                                error = true;
+                            }
+                            break;
+                        case 2:
+                            System.out.println("Ingresa una estructura switch:");
+                            String estructuraSwitch = sc.nextLine();
+                            String varSwitch = "^\\s*switch\\s*\\([^)]*\\)\\s*\\{\\s*(case\\s+[^:]+:\\s*[^;]*;\\s*)+\\s*(default:\\s*[^;]*;\\s*)?\\}\\s*$";
+                            if (estructuraSwitch.matches(varSwitch)) {
+                                System.out.println("Estructura switch válida.");
+                                error = false;
+                            } else {
+                                System.out.println("Estructura switch inválida.");
                                 error = true;
                             }
                             break;
                         default:
-                            System.out.println("Error: Opcion no valida.");
+                            System.out.println("Error: Opcion no valida..");
+                            error = true;
+                            break;
+                    }
+//                    try {
+//                        System.out.println("Selecciona el tipo de dato a verificar.");
+//                        System.out.println("1. Tipo de dato Entero.");
+//                        System.out.println("2. Tipo de dato String.");
+//                        System.out.println("3. Tipo de dato Doble.");
+//                        System.out.println("4. Tipo de dato Flotante");
+//                        System.out.println("5. Tipo de dato Booleano.");
+//                        opcDato = sc.nextInt();
+//                    } catch (InputMismatchException e) {
+//                        System.out.println("Error: opcion no valida...");
+//                    }
+//                    sc.nextLine();
+//                    switch (opcDato) {
+//                        case 1:
+//                            System.out.println("Ingresa la declaracion de una variable entera: ");
+//                            String entero = sc.nextLine();
+//                            String varEntero = "\\s*^int\\s+.*$";
+//                            if (entero.matches(varEntero)) {
+//                                System.out.println("Declaracion valida.");
+//                                error = false;
+//                            } else {
+//                                System.out.println("Declaracion invalida.");
+//                                error = true;
+//                            }
+//                            break;
+//                        default:
+//                            System.out.println("Error: Opcion no valida.");
+//                            error = true;
+//                            break;
+//                    }
+//
+//                    break;
+//                case 3:
+//                            System.out.println("Selecciona la Estructura Condicional a verificar.");
+//                            System.out.println("1. Estructura Condicional if-else");
+//                            System.out.println("2. Estructura ");
+                    break;
+                    // ===== Validar Estructuras de Repeticion =====
+                case 3:
+                    try {
+                        System.out.println("Ingresa al Estructura de Repeticion a verificar.");
+                        System.out.println("1. Estructura de Repeticion For.");
+                        System.out.println("2. Estructura de Repeticion While.");
+                        System.out.println("3. Estructura de Repeticion Do-While.");
+                        opcER = sc.nextInt();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Error: Opcion no valida..");
+                    }
+                    sc.nextLine();
+                    switch (opcER) {
+                        case 1:
+                            System.out.println("Ingresa una estructura for:");
+                            String forE = sc.nextLine();
+                            String varFor = "^\\s*for\\s*\\(\\s*[^;]+;\\s*[^;]+;\\s*[^)]+\\)\\s*\\{[^}]*\\}\\s*$";
+                            if (forE.matches(varFor)) {
+                                System.out.println("Estructura for válida.");
+                                error = false;
+                            } else {
+                                System.out.println("Estructura for inválida.");
+                                error = true;
+                            }
+                            break;
+                        case 2:
+                            System.out.println("Ingresa una estructura while:");
+                            String whilE = sc.nextLine();
+                            String varWhile = "^\\s*while\\s*\\([^)]*\\)\\s*\\{[^}]*\\}\\s*$";
+                            if (whilE.matches(varWhile)) {
+                                System.out.println("Estructura while válida.");
+                                error = false;
+                            } else {
+                                System.out.println("Estructura while inválida.");
+                                error = true;
+                            }
+                            break;
+                        case 3:
+                            System.out.println("Ingresa una estructura do-while:");
+                            String doWhile = sc.nextLine();
+                            String varDoWhile = "^\\s*do\\s*\\{[^}]*\\}\\s*while\\s*\\([^)]*\\)\\s*;\\s*$";
+                            if (doWhile.matches(varDoWhile)) {
+                                System.out.println("Estructura do-while válida.");
+                                error = false;
+                            } else {
+                                System.out.println("Estructura do-while inválida.");
+                                error = true;
+                            }
+                            break;
+                        default:
+                            System.out.println("Error: Opcion no valida..");
                             error = true;
                             break;
                     }
 
                     break;
-                case 3:
-
-                    break;
                 default:
-                    System.out.println("Opcion no cnotenida en el menu...");
+                    System.out.println("Error: Opcion no valida...");
                     error = true;
                     break;
             }
