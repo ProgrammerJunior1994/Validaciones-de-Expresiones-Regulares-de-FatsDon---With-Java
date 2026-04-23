@@ -37,7 +37,7 @@ public class ExpresionesFastDon {
                         System.out.println("Ingresa una expresion para verificar:");
                         System.out.println("1. Declaracion de una variable Entera (int).");
                         System.out.println("2. Declaracion de una variable de Cadena (String).");
-                        System.out.println("3. Declaracion de una variable doble (double).");
+                        System.out.println("3. Declaracion de una variable doble (double)."); // Eliminar números con números decimal y flotantes (Double y Float)
                         System.out.println("4. Declaracion de una variable flotante (float).");
                         System.out.println("5. Declaracion de una variable Booleana (boolean).");
                         System.out.println("Presiona 0 para salir del programa.");
@@ -163,7 +163,7 @@ public class ExpresionesFastDon {
 
                 case 3:
                     try {
-                        System.out.println("Ingresa la Estructura de Repeticion a verificar.");
+                        System.out.println("Ingresa la Estructura de Repeticion a verificar."); // Que valide operadores aritméticos 
                         System.out.println("1. Estructura de Repeticion For.");
                         System.out.println("2. Estructura de Repeticion While.");
                         System.out.println("3. Estructura de Repeticion Do-While.");
